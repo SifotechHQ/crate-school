@@ -61,16 +61,16 @@
   @keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
   /* ---------- top bar ---------- */
-  .hud{display:flex;align-items:center;gap:8px;justify-content:space-between}
-  .pill{font-family:var(--display);font-size:.7rem;letter-spacing:.08em;
-    padding:6px 10px;border-radius:99px;background:#222e37;color:var(--chalk);
-    border:2px solid #2f3e49;white-space:nowrap}
+  .hud{display:flex;align-items:center;gap:6px;justify-content:space-between;flex-wrap:wrap}
+  .pill{font-family:var(--display);font-size:.68rem;letter-spacing:.06em;
+    padding:6px 9px;border-radius:99px;background:#222e37;color:var(--chalk);
+    border:2px solid #2f3e49;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
   .pill.sub{background:var(--wood-deep);border-color:var(--wood-dark);color:#ffe6c4}
   .pill.count{background:#22323b;color:var(--lime);border-color:#31474f}
   .iconbtn{font-size:1.1rem;line-height:1;padding:7px 9px;border-radius:10px;
     background:#222e37;border:2px solid #2f3e49;color:var(--chalk);cursor:pointer}
   .iconbtn:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
-  .bar-row{display:flex;align-items:center;gap:8px}
+  .bar-row{display:flex;align-items:center;gap:6px;min-width:0;flex-shrink:1}
 
   /* ---------- crate ---------- */
   .belt{position:relative;flex:1;display:flex;flex-direction:column;
@@ -140,17 +140,18 @@
   .timer i.low{background:linear-gradient(90deg,var(--ember),#ffb08e)}
 
   /* ---------- answers ---------- */
-  .pad{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-  .pad.two{grid-template-columns:1fr 1fr}
+  .pad{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .pad.two{grid-template-columns:repeat(2,minmax(0,1fr))}
   .key{
     font-family:var(--display);font-size:1.85rem;padding:15px 8px;border-radius:12px;
     color:#14202a;background:linear-gradient(180deg,#f3ece0,#cfc3ad);
     border:none;border-bottom:5px solid #8f8672;cursor:pointer;
-    font-variant-numeric:tabular-nums;transition:transform .08s;
+    font-variant-numeric:tabular-nums;transition:transform .08s;min-width:0;
     display:flex;align-items:center;justify-content:center;gap:8px;min-height:70px;
   }
   .key .kswatch{width:26px;height:26px;border-radius:6px;border:2px solid rgba(20,32,42,.5)}
   .key .kemoji{font-size:2rem}
+  .key > span{min-width:0;overflow-wrap:anywhere;line-height:1.15;text-align:center}
   .key.word{font-family:var(--body);font-weight:900;font-size:1.5rem;letter-spacing:.04em}
   .key.hi{font-family:var(--hindi);font-weight:800;font-size:2rem;letter-spacing:.02em}
   .key.pa{font-family:var(--gurmukhi);font-weight:800;font-size:2rem;letter-spacing:.02em}
@@ -191,9 +192,11 @@
   .who b{font-family:var(--display);font-size:.8rem;letter-spacing:.08em;color:#ffe6c4}
 
   .block{width:100%;max-width:340px;display:flex;flex-direction:column;gap:8px;align-items:stretch}
+  .blabel.gur{font-family:var(--gurmukhi);font-weight:600;font-size:.8rem;letter-spacing:.02em}
+  .blabel.dev{font-family:var(--hindi);font-weight:600;font-size:.8rem;letter-spacing:.02em}
   .blabel{font-family:var(--display);font-size:.62rem;letter-spacing:.18em;color:var(--steel);
     text-align:left;text-transform:uppercase}
-  .subjects{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+  .subjects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
   .subj{display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;
     border-radius:14px;cursor:pointer;color:#e6eef3;font-weight:900;font-size:1rem;
     background:#222e37;border:3px solid #31414c}
@@ -206,7 +209,7 @@
   .subj[aria-pressed="true"] small{color:#4a5560}
   .subj:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
 
-  .speeds{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .speeds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .speed{padding:10px 4px;border-radius:11px;border:3px solid #31414c;background:#222e37;
     color:#e6eef3;font-weight:900;font-size:.85rem;cursor:pointer;display:flex;
     flex-direction:column;gap:2px;align-items:center}
@@ -216,7 +219,7 @@
   .speed[aria-pressed="true"] small{color:#2c3f14}
   .speed:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
 
-  .levels{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+  .levels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
   .lv{aspect-ratio:.92;border-radius:9px;border:3px solid var(--wood-deep);cursor:pointer;
     background:linear-gradient(160deg,var(--wood),var(--wood-dark));color:#2a1a0a;
     font-family:var(--display);font-size:1rem;display:flex;flex-direction:column;
@@ -427,6 +430,24 @@
                   "ਟ","ਠ","ਡ","ਢ","ਣ","ਤ","ਥ","ਦ","ਧ","ਨ","ਪ","ਫ","ਬ","ਭ","ਮ",
                   "ਯ","ਰ","ਲ","ਵ","ੜ"];
   const PA_DIGITS=["੦","੧","੨","੩","੪","੫","੬","੭","੮","੯","੧੦"];
+  // ਪੈਂਤੀ ਅੱਖਰੀ — letter, its name, and the name spelled in Devanagari for the voice fallback
+  const PENTI=[
+    {l:"ੳ",nm:"ਊੜਾ",dev:"ऊड़ा"},   {l:"ਅ",nm:"ਐੜਾ",dev:"ऐड़ा"},   {l:"ੲ",nm:"ਈੜੀ",dev:"ईड़ी"},
+    {l:"ਸ",nm:"ਸੱਸਾ",dev:"सस्सा"}, {l:"ਹ",nm:"ਹਾਹਾ",dev:"हाहा"},
+    {l:"ਕ",nm:"ਕੱਕਾ",dev:"कक्का"}, {l:"ਖ",nm:"ਖੱਖਾ",dev:"खक्खा"}, {l:"ਗ",nm:"ਗੱਗਾ",dev:"गग्गा"},
+    {l:"ਘ",nm:"ਘੱਗਾ",dev:"घग्गा"}, {l:"ਙ",nm:"ਙੰਙਾ",dev:"ङंङा"},
+    {l:"ਚ",nm:"ਚੱਚਾ",dev:"चच्चा"}, {l:"ਛ",nm:"ਛੱਛਾ",dev:"छच्छा"}, {l:"ਜ",nm:"ਜੱਜਾ",dev:"जज्जा"},
+    {l:"ਝ",nm:"ਝੱਜਾ",dev:"झज्जा"}, {l:"ਞ",nm:"ਞੰਞਾ",dev:"ञंञा"},
+    {l:"ਟ",nm:"ਟੈਂਕਾ",dev:"टैंका"}, {l:"ਠ",nm:"ਠੱਠਾ",dev:"ठठ्ठा"}, {l:"ਡ",nm:"ਡੱਡਾ",dev:"डड्डा"},
+    {l:"ਢ",nm:"ਢੱਡਾ",dev:"ढड्डा"}, {l:"ਣ",nm:"ਣਾਣਾ",dev:"णाणा"},
+    {l:"ਤ",nm:"ਤੱਤਾ",dev:"तत्ता"}, {l:"ਥ",nm:"ਥੱਥਾ",dev:"थथ्था"}, {l:"ਦ",nm:"ਦੱਦਾ",dev:"दद्दा"},
+    {l:"ਧ",nm:"ਧੱਦਾ",dev:"धद्दा"}, {l:"ਨ",nm:"ਨੰਨਾ",dev:"नन्ना"},
+    {l:"ਪ",nm:"ਪੱਪਾ",dev:"पप्पा"}, {l:"ਫ",nm:"ਫੱਫਾ",dev:"फफ्फा"}, {l:"ਬ",nm:"ਬੱਬਾ",dev:"बब्बा"},
+    {l:"ਭ",nm:"ਭੱਬਾ",dev:"भब्बा"}, {l:"ਮ",nm:"ਮੰਮਾ",dev:"मम्मा"},
+    {l:"ਯ",nm:"ਯੱਯਾ",dev:"यय्या"}, {l:"ਰ",nm:"ਰਾਰਾ",dev:"रारा"}, {l:"ਲ",nm:"ਲੱਲਾ",dev:"लल्ला"},
+    {l:"ਵ",nm:"ਵੱਵਾ",dev:"वव्वा"}, {l:"ੜ",nm:"ੜਾੜਾ",dev:"ड़ाड़ा"}
+  ];
+  const PENTI_ROW = g => PENTI.slice(g*5,g*5+5);
   const PA_FRUITS=[
     {name:"ਸੇਬ",e:"🍎",f:"ਸ",dev:"सेब"},{name:"ਅੰਬ",e:"🥭",f:"ਅ",dev:"अंब"},
     {name:"ਕੇਲਾ",e:"🍌",f:"ਕ",dev:"केला"},{name:"ਅੰਗੂਰ",e:"🍇",f:"ਅ",dev:"अंगूर"},
@@ -489,16 +510,21 @@
       {n:10,q:8, types:["hiPicWord","hiCount","hiColour","hiSwarVyanjan"], hint:"सब कुछ मिलाकर"}
     ],
     punjabi:[
-      {n:1, q:5, types:["paFruit"],                      hint:"ਫਲਾਂ ਦੇ ਨਾਂ"},
-      {n:2, q:5, types:["paAnimal"],                     hint:"ਜਾਨਵਰਾਂ ਦੇ ਨਾਂ"},
-      {n:3, q:6, types:["paColour"],                     hint:"ਰੰਗਾਂ ਦੇ ਨਾਂ"},
-      {n:4, q:6, types:["paCount"],                      hint:"ਗਿਣਤੀ ੦ ਤੋਂ ੧੦"},
-      {n:5, q:6, types:["paAkharOrder"],                 hint:"ਪੈਂਤੀ ਅੱਖਰੀ"},
-      {n:6, q:6, types:["paFirstLetter"],                hint:"ਪਹਿਲਾ ਅੱਖਰ"},
-      {n:7, q:7, types:["paPicWord"],                    hint:"ਸ਼ਬਦ ਪਛਾਣੋ"},
-      {n:8, q:7, types:["paAkharOrder","paCount"],       hint:"ਅੱਖਰ ਤੇ ਗਿਣਤੀ"},
-      {n:9, q:7, types:["paPicWord","paFirstLetter"],    hint:"ਸ਼ਬਦ ਤੇ ਅੱਖਰ"},
-      {n:10,q:8, types:["paPicWord","paColour","paCount","paAkharOrder"], hint:"ਸਭ ਕੁਝ ਰਲਾ ਕੇ"}
+      {n:1, q:5, types:["paName:0"],   hint:"ੳ ਅ ੲ ਸ ਹ — ਊੜਾ ਐੜਾ ਈੜੀ ਸੱਸਾ ਹਾਹਾ"},
+      {n:2, q:5, types:["paName:1"],   hint:"ਕ ਖ ਗ ਘ ਙ — ਕੱਕਾ ਖੱਖਾ ਗੱਗਾ ਘੱਗਾ ਙੰਙਾ"},
+      {n:3, q:5, types:["paName:2"],   hint:"ਚ ਛ ਜ ਝ ਞ — ਚੱਚਾ ਛੱਛਾ ਜੱਜਾ ਝੱਜਾ ਞੰਞਾ"},
+      {n:4, q:5, types:["paName:3"],   hint:"ਟ ਠ ਡ ਢ ਣ — ਟੈਂਕਾ ਠੱਠਾ ਡੱਡਾ ਢੱਡਾ ਣਾਣਾ"},
+      {n:5, q:5, types:["paName:4"],   hint:"ਤ ਥ ਦ ਧ ਨ — ਤੱਤਾ ਥੱਥਾ ਦੱਦਾ ਧੱਦਾ ਨੰਨਾ"},
+      {n:6, q:6, types:["paName:5"],   hint:"ਪ ਫ ਬ ਭ ਮ — ਪੱਪਾ ਫੱਫਾ ਬੱਬਾ ਭੱਬਾ ਮੰਮਾ"},
+      {n:7, q:6, types:["paName:6"],   hint:"ਯ ਰ ਲ ਵ ੜ — ਯੱਯਾ ਰਾਰਾ ਲੱਲਾ ਵੱਵਾ ੜਾੜਾ"},
+      {n:8, q:7, types:["paNameAll"],  hint:"ਸਾਰੀ ਪੈਂਤੀ — ਅੱਖਰ ਦਾ ਨਾਂ ਦੱਸੋ"},
+      {n:9, q:7, types:["paFindLetter"],hint:"ਨਾਂ ਸੁਣ ਕੇ ਅੱਖਰ ਲੱਭੋ"},
+      {n:10,q:7, types:["paAkharOrder"],hint:"ਪੈਂਤੀ ਦਾ ਕ੍ਰਮ"},
+      {n:11,q:6, types:["paFruit"],    hint:"ਫਲਾਂ ਦੇ ਨਾਂ"},
+      {n:12,q:6, types:["paAnimal"],   hint:"ਜਾਨਵਰਾਂ ਦੇ ਨਾਂ"},
+      {n:13,q:6, types:["paColour"],   hint:"ਰੰਗਾਂ ਦੇ ਨਾਂ"},
+      {n:14,q:6, types:["paCount"],    hint:"ਗਿਣਤੀ ੦ ਤੋਂ ੧੦"},
+      {n:15,q:8, types:["paFirstLetter","paPicWord","paNameAll","paCount"], hint:"ਸਭ ਕੁਝ ਰਲਾ ਕੇ"}
     ]
   };
 
@@ -506,7 +532,7 @@
     maths:{3:{e:"🌟",n:"Star Sticker"},6:{e:"🏅",n:"Gold Medal"},9:{e:"🦄",n:"Unicorn Badge"},10:{e:"🏆",n:"Number Champion"}},
     english:{3:{e:"🎈",n:"Balloon Badge"},6:{e:"📚",n:"Reading Badge"},9:{e:"🦋",n:"Butterfly Badge"},10:{e:"👑",n:"Word Crown"}},
     hindi:{3:{e:"🪁",n:"पतंग बैज"},6:{e:"🌸",n:"फूल बैज"},9:{e:"🦚",n:"मोर बैज"},10:{e:"🏆",n:"हिंदी चैंपियन"}},
-    punjabi:{3:{e:"🌻",n:"ਸੂਰਜਮੁਖੀ ਬੈਜ"},6:{e:"🥁",n:"ਢੋਲ ਬੈਜ"},9:{e:"🕊️",n:"ਪੰਛੀ ਬੈਜ"},10:{e:"🏆",n:"ਪੰਜਾਬੀ ਚੈਂਪੀਅਨ"}}
+    punjabi:{3:{e:"🌻",n:"ਸੂਰਜਮੁਖੀ ਬੈਜ"},6:{e:"🥁",n:"ਢੋਲ ਬੈਜ"},9:{e:"🕊️",n:"ਪੰਛੀ ਬੈਜ"},12:{e:"🐘",n:"ਜਾਨਵਰ ਬੈਜ"},15:{e:"🏆",n:"ਪੰਜਾਬੀ ਚੈਂਪੀਅਨ"}}
   };
 
   /* ============ ਪੰਜਾਬੀ — instruction phrase book ============ */
@@ -925,6 +951,43 @@
     const pool=PA_FRUITS.concat(PA_ANIMALS), it=pick(pool);
     return paQ("ਸਹੀ ਸ਼ਬਦ ਚੁਣੋ","सही शबद चुणो",{kind:"emoji",e:it.e},it,pool);
   };
+  GEN.paName=function(group){
+    const row=PENTI_ROW(Number(group)||0), it=pick(row);
+    const others=sample(row.length>=4?row:PENTI,3,[it]);
+    return {
+      ask:"ਇਸ ਅੱਖਰ ਦਾ ਨਾਂ ਕੀ ਹੈ?", speak:"ਇਸ ਅੱਖਰ ਦਾ ਨਾਂ ਕੀ ਹੈ?",
+      lang:"pa-IN", pa:true, gur:true,
+      paSay:{gur:"ਇਸ ਅੱਖਰ ਦਾ ਨਾਂ ਕੀ ਹੈ?",dev:"इस अक्खर दा नां की है?"},
+      visual:null, face:it.l,
+      options:shuffle([it,...others]).map(x=>({label:x.nm,pa:true})),
+      answer:it.nm,
+      saySuccess:{gur:"ਸ਼ਾਬਾਸ਼! "+it.nm, dev:"शाबाश! "+it.dev}
+    };
+  };
+  GEN.paNameAll=function(){
+    const it=pick(PENTI), others=sample(PENTI,3,[it]);
+    return {
+      ask:"ਇਸ ਅੱਖਰ ਦਾ ਨਾਂ ਕੀ ਹੈ?", speak:"ਇਸ ਅੱਖਰ ਦਾ ਨਾਂ ਕੀ ਹੈ?",
+      lang:"pa-IN", pa:true, gur:true,
+      paSay:{gur:"ਇਸ ਅੱਖਰ ਦਾ ਨਾਂ ਕੀ ਹੈ?",dev:"इस अक्खर दा नां की है?"},
+      visual:null, face:it.l,
+      options:shuffle([it,...others]).map(x=>({label:x.nm,pa:true})),
+      answer:it.nm,
+      saySuccess:{gur:"ਸ਼ਾਬਾਸ਼! "+it.nm, dev:"शाबाश! "+it.dev}
+    };
+  };
+  GEN.paFindLetter=function(){
+    const it=pick(PENTI), others=sample(PENTI,3,[it]);
+    return {
+      ask:"ਕਿਹੜਾ ਅੱਖਰ "+it.nm+" ਹੈ?", speak:"ਕਿਹੜਾ ਅੱਖਰ "+it.nm+" ਹੈ?",
+      lang:"pa-IN", pa:true, gur:true,
+      paSay:{gur:"ਕਿਹੜਾ ਅੱਖਰ "+it.nm+" ਹੈ?", dev:"किहड़ा अक्खर "+it.dev+" है?"},
+      visual:null, face:it.nm, faceSmall:true,
+      options:shuffle([it,...others]).map(x=>({label:x.l,pa:true})),
+      answer:it.l,
+      saySuccess:{gur:"ਸ਼ਾਬਾਸ਼! "+it.nm, dev:"शाबाश! "+it.dev}
+    };
+  };
   GEN.paAkharOrder=function(){
     const i=rnd(PA_AKHAR.length-2), ans=PA_AKHAR[i+1];
     return {
@@ -1006,7 +1069,12 @@
       box.appendChild(b);
     });
     const L=list[sel.level-1];
-    $("lvLabel").textContent="Choose a level — "+L.hint.toUpperCase();
+    $("lvLabel").className="blabel"+(sel.subject==="punjabi"?" gur":sel.subject==="hindi"?" dev":"");
+    var lvWord = sel.subject==="punjabi" ? "\u0a2a\u0a71\u0a27\u0a30"
+              : sel.subject==="hindi"   ? "\u0938\u094d\u0924\u0930" : "";
+    $("lvLabel").textContent = lvWord
+      ? (lvWord+" "+sel.level+" \u00b7 "+L.hint)
+      : ("Choose a level \u2014 "+L.hint.toUpperCase());
     $("start").textContent="START LEVEL "+sel.level+" · "+L.q+" Qs";
     const shelf=$("shelf");
     shelf.innerHTML="";
@@ -1049,7 +1117,8 @@
     game.i++;
     $("pCount").textContent=game.i+" / "+def.q;
     const type=def.types[(game.i-1)%def.types.length];
-    const q=GEN[type]();
+    const bits=type.split(":");
+    const q=GEN[bits[0]](bits[1]);
     game.q=q;
 
     askEl.textContent=q.ask;
@@ -1157,7 +1226,7 @@
       crate.classList.add("hit"); splinters(); floatText("+1");
       tone(660,.09,"square",.05); setTimeout(()=>tone(990,.13,"square",.05),80);
       buzz(25);
-      if(game.subject==="punjabi") sayPa(pick(PA_GOOD),true);
+      if(game.subject==="punjabi") sayPa(game.q.saySuccess||pick(PA_GOOD),true);
       else speak(game.subject==="hindi" ? pick(["शाबाश","बहुत बढ़िया","सही जवाब","वाह"])
                                         : pick(["Well done!","Yes, that's it!","Super!","Lovely!","Clever girl!"]),
                  game.subject==="hindi" ? "hi-IN" : "en-GB", pick(PA_GOOD));
@@ -1199,7 +1268,7 @@
       ? "Brilliant, "+FIRST+". Every crate opened."
       : ratio>=0.65 ? "Well done, "+FIRST+". Play again for three stars."
       : "Good try, "+FIRST+". Let's practise this level once more.";
-    $("next").classList.toggle("hide", game.level>=10);
+    $("next").classList.toggle("hide", game.level>=LEVELS[game.subject].length);
     $("pDone").classList.remove("hide");
     tone(523,.14,"triangle",.06); setTimeout(()=>tone(659,.14,"triangle",.06),140);
     setTimeout(()=>tone(784,.3,"triangle",.06),280);
@@ -1288,7 +1357,7 @@
   $("toHome").addEventListener("click",goHome);
   $("retry").addEventListener("click",()=>startLevel(game.subject,game.level));
   $("next").addEventListener("click",()=>{
-    const nx=Math.min(10,game.level+1);
+    const nx=Math.min(LEVELS[game.subject].length,game.level+1);
     sel.level=nx; startLevel(game.subject,nx);
   });
   $("rwGo").addEventListener("click",()=>$("pReward").classList.add("hide"));
