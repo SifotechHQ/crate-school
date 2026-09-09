@@ -4,7 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#141b21">
-<meta name="description" content="Manreet's Crate School - a UKG learning game: Maths, English and Hindi, with pictures, read-aloud questions and Punjabi help.">
+<meta name="description" content="A learning game for UKG: Maths, English, Hindi and Punjabi - pictures, read-aloud questions, stars and rewards.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Manreet's Crate School">
+<meta property="og:title" content="Manreet's Crate School">
+<meta property="og:description" content="A learning game for UKG: Maths, English, हिंदी and ਪੰਜਾਬੀ - pictures, read-aloud questions, stars and rewards.">
+<meta property="og:url" content="https://sifotechhq.github.io/crate-school/">
+<meta property="og:image" content="https://sifotechhq.github.io/crate-school/icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Manreet's Crate School">
+<meta name="twitter:description" content="Maths, English, Hindi and Punjabi practice for UKG.">
+<meta name="twitter:image" content="https://sifotechhq.github.io/crate-school/icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Crate School">
@@ -95,6 +105,10 @@
   .face.hi{font-family:var(--hindi);font-weight:800;transform:none;letter-spacing:2px;
     font-size:clamp(2.6rem,13vw,3.9rem)}
   .face.hi.small{font-size:clamp(2rem,10vw,2.9rem)}
+  .face.pa{font-family:var(--gurmukhi);font-weight:800;transform:none;letter-spacing:2px;
+    font-size:clamp(2.6rem,13vw,3.9rem)}
+  .face.pa.small{font-size:clamp(2rem,10vw,2.9rem)}
+  .ask.gur{font-family:var(--gurmukhi);font-weight:600;font-size:1.25rem}
   .pics{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:3px;justify-content:center;
     max-width:88%;font-size:clamp(1.6rem,7.5vw,2.2rem);line-height:1.15}
   .pic{position:relative;z-index:2;font-size:clamp(4.6rem,22vw,6.6rem);line-height:1}
@@ -139,6 +153,7 @@
   .key .kemoji{font-size:2rem}
   .key.word{font-family:var(--body);font-weight:900;font-size:1.5rem;letter-spacing:.04em}
   .key.hi{font-family:var(--hindi);font-weight:800;font-size:2rem;letter-spacing:.02em}
+  .key.pa{font-family:var(--gurmukhi);font-weight:800;font-size:2rem;letter-spacing:.02em}
   .key:active{transform:translateY(3px);border-bottom-width:2px}
   .key:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
   .key.right{background:linear-gradient(180deg,var(--lime),#8fbc2e);border-bottom-color:#5d7d1c}
@@ -178,13 +193,14 @@
   .block{width:100%;max-width:340px;display:flex;flex-direction:column;gap:8px;align-items:stretch}
   .blabel{font-family:var(--display);font-size:.62rem;letter-spacing:.18em;color:var(--steel);
     text-align:left;text-transform:uppercase}
-  .subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .subjects{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
   .subj{display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;
-    border-radius:14px;cursor:pointer;color:#e6eef3;font-weight:900;font-size:.92rem;
+    border-radius:14px;cursor:pointer;color:#e6eef3;font-weight:900;font-size:1rem;
     background:#222e37;border:3px solid #31414c}
   .subj .ico{font-size:1.7rem;line-height:1}
   .subj .ico.hi{font-family:var(--hindi);font-weight:800;font-size:1.8rem}
-  .subj small{font-weight:700;font-size:.58rem;color:var(--steel);line-height:1.25}
+  .subj .ico.pa{font-family:var(--gurmukhi);font-weight:800;font-size:1.8rem}
+  .subj small{font-weight:700;font-size:.62rem;color:var(--steel);line-height:1.3}
   .subj[aria-pressed="true"]{background:linear-gradient(180deg,#f3ece0,#d7cbb4);color:#14202a;
     border-color:var(--wood);box-shadow:0 0 0 3px rgba(217,149,74,.35)}
   .subj[aria-pressed="true"] small{color:#4a5560}
@@ -273,7 +289,7 @@
   <div class="panel" id="pHome">
     <div class="brand">
       <h1>Manreet's<em>Crate School</em></h1>
-      <div class="tag">Maths · English · <span style="font-family:var(--hindi);font-weight:800">हिंदी</span> · for UKG</div>
+      <div class="tag">Maths · English · <span style="font-family:var(--hindi);font-weight:800">हिंदी</span> · <span style="font-family:var(--gurmukhi);font-weight:800">ਪੰਜਾਬੀ</span></div>
     </div>
     <div class="who"><span class="av">👧</span><b>MANREET KAUR</b></div>
 
@@ -288,6 +304,9 @@
         </button>
         <button class="subj" id="sHindi" data-subject="hindi" type="button" aria-pressed="false">
           <span class="ico hi">अ</span>हिंदी<small>स्वर · व्यंजन · शब्द</small>
+        </button>
+        <button class="subj" id="sPunjabi" data-subject="punjabi" type="button" aria-pressed="false">
+          <span class="ico pa">ੳ</span><span style="font-family:var(--gurmukhi);font-weight:800">ਪੰਜਾਬੀ</span><small>ਪੈਂਤੀ · ਸ਼ਬਦ · ਗਿਣਤੀ</small>
         </button>
       </div>
     </div>
@@ -403,6 +422,34 @@
   const HI_DIGITS=["०","१","२","३","४","५","६","७","८","९","१०"];
   const COUNTABLE=["🍎","⭐","🎈","🐟","🌸","🚗"];
 
+  /* ---------- ਪੰਜਾਬੀ (Gurmukhi shown; dev spelling is only for the voice fallback) ---------- */
+  const PA_AKHAR=["ੳ","ਅ","ੲ","ਸ","ਹ","ਕ","ਖ","ਗ","ਘ","ਙ","ਚ","ਛ","ਜ","ਝ","ਞ",
+                  "ਟ","ਠ","ਡ","ਢ","ਣ","ਤ","ਥ","ਦ","ਧ","ਨ","ਪ","ਫ","ਬ","ਭ","ਮ",
+                  "ਯ","ਰ","ਲ","ਵ","ੜ"];
+  const PA_DIGITS=["੦","੧","੨","੩","੪","੫","੬","੭","੮","੯","੧੦"];
+  const PA_FRUITS=[
+    {name:"ਸੇਬ",e:"🍎",f:"ਸ",dev:"सेब"},{name:"ਅੰਬ",e:"🥭",f:"ਅ",dev:"अंब"},
+    {name:"ਕੇਲਾ",e:"🍌",f:"ਕ",dev:"केला"},{name:"ਅੰਗੂਰ",e:"🍇",f:"ਅ",dev:"अंगूर"},
+    {name:"ਸੰਤਰਾ",e:"🍊",f:"ਸ",dev:"संतरा"},{name:"ਤਰਬੂਜ਼",e:"🍉",f:"ਤ",dev:"तरबूज़"},
+    {name:"ਨਾਰੀਅਲ",e:"🥥",f:"ਨ",dev:"नारीअल"},{name:"ਨਿੰਬੂ",e:"🍋",f:"ਨ",dev:"निंबू"},
+    {name:"ਨਾਸ਼ਪਾਤੀ",e:"🍐",f:"ਨ",dev:"नाशपाती"},{name:"ਅਨਾਨਾਸ",e:"🍍",f:"ਅ",dev:"अनानास"}
+  ];
+  const PA_ANIMALS=[
+    {name:"ਕੁੱਤਾ",e:"🐶",f:"ਕ",dev:"कुत्ता"},{name:"ਬਿੱਲੀ",e:"🐱",f:"ਬ",dev:"बिल्ली"},
+    {name:"ਗਾਂ",e:"🐄",f:"ਗ",dev:"गां"},{name:"ਬੱਕਰੀ",e:"🐐",f:"ਬ",dev:"बकरी"},
+    {name:"ਹਾਥੀ",e:"🐘",f:"ਹ",dev:"हाथी"},{name:"ਸ਼ੇਰ",e:"🦁",f:"ਸ਼",dev:"शेर"},
+    {name:"ਬਾਂਦਰ",e:"🐒",f:"ਬ",dev:"बांदर"},{name:"ਮੱਛੀ",e:"🐟",f:"ਮ",dev:"मछली"},
+    {name:"ਘੋੜਾ",e:"🐴",f:"ਘ",dev:"घोड़ा"},{name:"ਚੂਹਾ",e:"🐭",f:"ਚ",dev:"चूहा"},
+    {name:"ਖਰਗੋਸ਼",e:"🐰",f:"ਖ",dev:"खरगोश"},{name:"ਮੋਰ",e:"🦚",f:"ਮ",dev:"मोर"}
+  ];
+  const PA_COLOURS=[
+    {name:"ਲਾਲ",hex:"#e23b32",dev:"लाल"},{name:"ਨੀਲਾ",hex:"#2f6fd0",dev:"नीला"},
+    {name:"ਹਰਾ",hex:"#35a24a",dev:"हरा"},{name:"ਪੀਲਾ",hex:"#f5c518",dev:"पीला"},
+    {name:"ਸੰਤਰੀ",hex:"#f07c1e",dev:"संतरी"},{name:"ਜਾਮਨੀ",hex:"#7b4bc4",dev:"जामनी"},
+    {name:"ਗੁਲਾਬੀ",hex:"#ef77a8",dev:"गुलाबी"},{name:"ਭੂਰਾ",hex:"#8b5a2b",dev:"भूरा"},
+    {name:"ਕਾਲਾ",hex:"#1a1a1a",dev:"काला"},{name:"ਚਿੱਟਾ",hex:"#f5f5f5",dev:"चिट्टा"}
+  ];
+
   /* ===================== LEVELS ===================== */
   const LEVELS = {
     maths:[
@@ -440,13 +487,26 @@
       {n:8, q:7, types:["hiSwarVyanjan","hiSwarOrder"],  hint:"स्वर या व्यंजन"},
       {n:9, q:7, types:["hiPicWord","hiFirstLetter"],    hint:"शब्द पहचानो"},
       {n:10,q:8, types:["hiPicWord","hiCount","hiColour","hiSwarVyanjan"], hint:"सब कुछ मिलाकर"}
+    ],
+    punjabi:[
+      {n:1, q:5, types:["paFruit"],                      hint:"ਫਲਾਂ ਦੇ ਨਾਂ"},
+      {n:2, q:5, types:["paAnimal"],                     hint:"ਜਾਨਵਰਾਂ ਦੇ ਨਾਂ"},
+      {n:3, q:6, types:["paColour"],                     hint:"ਰੰਗਾਂ ਦੇ ਨਾਂ"},
+      {n:4, q:6, types:["paCount"],                      hint:"ਗਿਣਤੀ ੦ ਤੋਂ ੧੦"},
+      {n:5, q:6, types:["paAkharOrder"],                 hint:"ਪੈਂਤੀ ਅੱਖਰੀ"},
+      {n:6, q:6, types:["paFirstLetter"],                hint:"ਪਹਿਲਾ ਅੱਖਰ"},
+      {n:7, q:7, types:["paPicWord"],                    hint:"ਸ਼ਬਦ ਪਛਾਣੋ"},
+      {n:8, q:7, types:["paAkharOrder","paCount"],       hint:"ਅੱਖਰ ਤੇ ਗਿਣਤੀ"},
+      {n:9, q:7, types:["paPicWord","paFirstLetter"],    hint:"ਸ਼ਬਦ ਤੇ ਅੱਖਰ"},
+      {n:10,q:8, types:["paPicWord","paColour","paCount","paAkharOrder"], hint:"ਸਭ ਕੁਝ ਰਲਾ ਕੇ"}
     ]
   };
 
   const REWARDS = {
     maths:{3:{e:"🌟",n:"Star Sticker"},6:{e:"🏅",n:"Gold Medal"},9:{e:"🦄",n:"Unicorn Badge"},10:{e:"🏆",n:"Number Champion"}},
     english:{3:{e:"🎈",n:"Balloon Badge"},6:{e:"📚",n:"Reading Badge"},9:{e:"🦋",n:"Butterfly Badge"},10:{e:"👑",n:"Word Crown"}},
-    hindi:{3:{e:"🪁",n:"पतंग बैज"},6:{e:"🌸",n:"फूल बैज"},9:{e:"🦚",n:"मोर बैज"},10:{e:"🏆",n:"हिंदी चैंपियन"}}
+    hindi:{3:{e:"🪁",n:"पतंग बैज"},6:{e:"🌸",n:"फूल बैज"},9:{e:"🦚",n:"मोर बैज"},10:{e:"🏆",n:"हिंदी चैंपियन"}},
+    punjabi:{3:{e:"🌻",n:"ਸੂਰਜਮੁਖੀ ਬੈਜ"},6:{e:"🥁",n:"ਢੋਲ ਬੈਜ"},9:{e:"🕊️",n:"ਪੰਛੀ ਬੈਜ"},10:{e:"🏆",n:"ਪੰਜਾਬੀ ਚੈਂਪੀਅਨ"}}
   };
 
   /* ============ ਪੰਜਾਬੀ — instruction phrase book ============ */
@@ -488,13 +548,13 @@
 
   /* ===================== SAVE ===================== */
   const KEY="crate-school-manreet-v1";
-  let save={stars:{maths:{},english:{},hindi:{}},rewards:[],speed:"normal",sound:true,punjabi:false};
+  let save={stars:{maths:{},english:{},hindi:{},punjabi:{}},rewards:[],speed:"normal",sound:true,punjabi:false};
   try{
     const raw=localStorage.getItem(KEY);
     if(raw){ const p=JSON.parse(raw); if(p&&p.stars) save=Object.assign(save,p); }
   }catch(e){}
   save.stars=save.stars||{};
-  ["maths","english","hindi"].forEach(k=>{ save.stars[k]=save.stars[k]||{}; });
+  ["maths","english","hindi","punjabi"].forEach(k=>{ save.stars[k]=save.stars[k]||{}; });
   save.rewards=save.rewards||[];
   function persist(){ try{ localStorage.setItem(KEY,JSON.stringify(save)); }catch(e){} }
 
@@ -589,15 +649,18 @@
   }
   // Punjabi: use a real pa-IN voice when the device has one, otherwise a Hindi
   // voice reading the same words spelled in Devanagari (sounds close enough).
-  function speakPunjabi(pa){
-    if(!save.sound || !save.punjabi || !pa) return;
+  function sayPa(pa,force){
+    if(!save.sound || !pa) return;
+    if(!force && !save.punjabi) return;
     try{
       if(!window.speechSynthesis) return;
+      if(force) window.speechSynthesis.cancel();
       const paVoice=pickVoice("pa-IN");
       if(paVoice && pa.gur) utter(pa.gur,"pa-IN",0.9,1.15);
       else if(pa.dev) utter(pa.dev,"hi-IN",0.9,1.15);
     }catch(e){}
   }
+  function speakPunjabi(pa){ sayPa(pa,false); }
   const buzz = p => { try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} };
 
   /* ===================== HELPERS ===================== */
@@ -836,6 +899,70 @@
       answer:it.f
     };
   };
+  // ---------- ਪੰਜਾਬੀ ----------
+  function paQ(ask,dev,visual,item,pool,extra){
+    const others=sample(pool,3,[item]);
+    return Object.assign({
+      ask:ask, speak:ask, lang:"pa-IN", pa:true, gur:true,
+      paSay:{gur:ask,dev:dev}, visual:visual, face:"",
+      options:shuffle([item,...others]).map(x=>({label:x.name,pa:true})),
+      answer:item.name
+    },extra||{});
+  }
+  GEN.paFruit=function(){
+    const f=pick(PA_FRUITS);
+    return paQ("ਇਹ ਕਿਹੜਾ ਫਲ ਹੈ?","इह किहड़ा फल है?",{kind:"emoji",e:f.e},f,PA_FRUITS);
+  };
+  GEN.paAnimal=function(){
+    const a=pick(PA_ANIMALS);
+    return paQ("ਇਹ ਕਿਹੜਾ ਜਾਨਵਰ ਹੈ?","इह किहड़ा जानवर है?",{kind:"emoji",e:a.e},a,PA_ANIMALS);
+  };
+  GEN.paColour=function(){
+    const c=pick(PA_COLOURS);
+    return paQ("ਇਹ ਕਿਹੜਾ ਰੰਗ ਹੈ?","इह किहड़ा रंग है?",{kind:"swatch",hex:c.hex},c,PA_COLOURS);
+  };
+  GEN.paPicWord=function(){
+    const pool=PA_FRUITS.concat(PA_ANIMALS), it=pick(pool);
+    return paQ("ਸਹੀ ਸ਼ਬਦ ਚੁਣੋ","सही शबद चुणो",{kind:"emoji",e:it.e},it,pool);
+  };
+  GEN.paAkharOrder=function(){
+    const i=rnd(PA_AKHAR.length-2), ans=PA_AKHAR[i+1];
+    return {
+      ask:"ਵਿਚਕਾਰ ਕਿਹੜਾ ਅੱਖਰ ਆਵੇਗਾ?", speak:"ਵਿਚਕਾਰ ਕਿਹੜਾ ਅੱਖਰ ਆਵੇਗਾ?",
+      lang:"pa-IN", pa:true, gur:true,
+      paSay:{gur:"ਵਿਚਕਾਰ ਕਿਹੜਾ ਅੱਖਰ ਆਵੇਗਾ?",dev:"विचकार किहड़ा अक्खर आवेगा?"},
+      visual:null, face:PA_AKHAR[i]+"  __  "+PA_AKHAR[i+2],
+      options:shuffle([ans,...sample(PA_AKHAR,3,[ans])]).map(x=>({label:x,pa:true})),
+      answer:ans
+    };
+  };
+  GEN.paFirstLetter=function(){
+    const pool=PA_FRUITS.concat(PA_ANIMALS), it=pick(pool);
+    return {
+      ask:"ਪਹਿਲਾ ਅੱਖਰ ਕਿਹੜਾ ਹੈ?", speak:"ਪਹਿਲਾ ਅੱਖਰ ਕਿਹੜਾ ਹੈ?",
+      lang:"pa-IN", pa:true, gur:true,
+      paSay:{gur:"ਪਹਿਲਾ ਅੱਖਰ ਕਿਹੜਾ ਹੈ? "+it.name, dev:"पहिला अक्खर किहड़ा है? "+it.dev},
+      visual:{kind:"emoji",e:it.e}, face:it.name, faceSmall:true,
+      options:shuffle([it.f,...sample(PA_AKHAR,3,[it.f])]).map(x=>({label:x,pa:true})),
+      answer:it.f
+    };
+  };
+  GEN.paCount=function(){
+    const num=1+rnd(10), e=pick(COUNTABLE), set=new Set([num]);
+    let g=0;
+    while(set.size<4 && g++<40){
+      const d=num+(rnd(2)?1:-1)*(1+rnd(3));
+      if(d>=0 && d<=10) set.add(d);
+    }
+    let k=0; while(set.size<4 && k<=10){ set.add(k); k++; }
+    return {
+      ask:"ਕਿੰਨੇ ਹਨ? ਗਿਣੋ", speak:"ਕਿੰਨੇ ਹਨ? ਗਿਣੋ", lang:"pa-IN", pa:true, gur:true,
+      paSay:{gur:"ਕਿੰਨੇ ਹਨ? ਗਿਣੋ",dev:"किंने हन? गिणो"},
+      visual:{kind:"emojis",e:e,n:num}, face:"",
+      options:shuffle([...set]).map(v=>({label:PA_DIGITS[v],pa:true})),
+      answer:PA_DIGITS[num]
+    };
+  };
   function table(lo,hi){
     const a=lo+rnd(hi-lo+1), b=lo+rnd(hi-lo+1), ans=a*b;
     const set=new Set([ans]);
@@ -912,7 +1039,7 @@
     const def=LEVELS[subject][level-1];
     game={subject:subject,level:level,def:def,i:0,correct:0,done:false,locked:true,limit:levelTime(level)};
     ["pHome","pDone","pReward"].forEach(id=>$(id).classList.add("hide"));
-    $("pSubject").textContent = subject==="maths" ? "🔢 MATHS" : subject==="english" ? "🔤 ENGLISH" : "अ हिंदी";
+    $("pSubject").textContent = subject==="maths" ? "🔢 MATHS" : subject==="english" ? "🔤 ENGLISH" : subject==="hindi" ? "अ हिंदी" : "ੳ ਪੰਜਾਬੀ";
     $("pLevel").textContent="LEVEL "+level;
     musicOn();
     nextQuestion();
@@ -937,7 +1064,7 @@
     q.options.forEach(opt=>{
       const o = (typeof opt==="string") ? {label:opt} : opt;
       const b=document.createElement("button");
-      b.type="button"; b.className="key"+(o.word?" word":"")+(o.hi?" hi":"");
+      b.type="button"; b.className="key"+(o.word?" word":"")+(o.hi?" hi":"")+(o.pa?" pa":"");
       if(o.swatch){
         const s=document.createElement("span"); s.className="kswatch";
         s.style.background=o.swatch; b.appendChild(s);
@@ -953,9 +1080,10 @@
     });
 
     const pa=paFor(q.ask);
+    askEl.className = "ask"+(q.gur?" gur":"");
     $("paAsk").textContent = (save.punjabi && pa) ? pa.gur : "";
     sayBtn.classList.toggle("hide", !q.speak);
-    speak(q.speak,q.lang,pa);
+    if(q.paSay) sayPa(q.paSay,true); else speak(q.speak,q.lang,pa);
 
     game.limit=levelTime(game.level);
     game.deadline=performance.now()+game.limit;
@@ -1000,7 +1128,7 @@
     }
     if(q.face){
       const f=document.createElement("div");
-      f.className="face"+(q.faceSmall?" small":"")+(q.hi?" hi":"");
+      f.className="face"+(q.faceSmall?" small":"")+(q.hi?" hi":"")+(q.pa?" pa":"");
       f.style.whiteSpace="pre-line";
       f.textContent=q.face;
       crate.insertBefore(f,stampEl);
@@ -1029,9 +1157,10 @@
       crate.classList.add("hit"); splinters(); floatText("+1");
       tone(660,.09,"square",.05); setTimeout(()=>tone(990,.13,"square",.05),80);
       buzz(25);
-      speak(game.subject==="hindi" ? pick(["शाबाश","बहुत बढ़िया","सही जवाब","वाह"])
-                                    : pick(["Well done!","Yes, that's it!","Super!","Lovely!","Clever girl!"]),
-            game.subject==="hindi" ? "hi-IN" : "en-GB", pick(PA_GOOD));
+      if(game.subject==="punjabi") sayPa(pick(PA_GOOD),true);
+      else speak(game.subject==="hindi" ? pick(["शाबाश","बहुत बढ़िया","सही जवाब","वाह"])
+                                        : pick(["Well done!","Yes, that's it!","Super!","Lovely!","Clever girl!"]),
+                 game.subject==="hindi" ? "hi-IN" : "en-GB", pick(PA_GOOD));
       setTimeout(step,900);
     } else {
       if(btn) btn.classList.add("wrong");
@@ -1039,9 +1168,10 @@
       app.classList.add("shake"); setTimeout(()=>app.classList.remove("shake"),240);
       tone(180,.26,"sawtooth",.05); buzz([30,50,30]);
       floatText(val===null?"TIME UP":"TRY AGAIN","#ff6a45");
-      speak(game.subject==="hindi" ? ("सही उत्तर है "+game.q.answer)
-                                    : ("The answer is "+sayAnswer(game.q.answer)),
-            game.subject==="hindi" ? "hi-IN" : "en-GB", PA_TRY);
+      if(game.subject==="punjabi") sayPa({gur:"ਸਹੀ ਜਵਾਬ ਹੈ "+game.q.answer, dev:PA_TRY.dev},true);
+      else speak(game.subject==="hindi" ? ("सही उत्तर है "+game.q.answer)
+                                        : ("The answer is "+sayAnswer(game.q.answer)),
+                 game.subject==="hindi" ? "hi-IN" : "en-GB", PA_TRY);
       setTimeout(step,1900);
     }
   }
@@ -1073,7 +1203,10 @@
     $("pDone").classList.remove("hide");
     tone(523,.14,"triangle",.06); setTimeout(()=>tone(659,.14,"triangle",.06),140);
     setTimeout(()=>tone(784,.3,"triangle",.06),280);
-    speak(game.subject==="hindi"
+    if(game.subject==="punjabi"){
+      sayPa(got===total ? {gur:"ਸ਼ਾਬਾਸ਼ "+FIRST,dev:"शाबाश "+FIRST}
+                        : {gur:"ਪੱਧਰ ਪੂਰਾ ਹੋਇਆ",dev:"पद्धर पूरा होइआ"}, true);
+    } else speak(game.subject==="hindi"
       ? (got===total ? "शाबाश "+FIRST : "स्तर पूरा हुआ")
       : (got===total ? "Perfect. Well done "+FIRST : "Level finished. "+got+" out of "+total),
       game.subject==="hindi" ? "hi-IN" : "en-GB");
@@ -1159,7 +1292,10 @@
     sel.level=nx; startLevel(game.subject,nx);
   });
   $("rwGo").addEventListener("click",()=>$("pReward").classList.add("hide"));
-  $("sayBtn").addEventListener("click",()=>{ if(game&&game.q) speak(game.q.speak,game.q.lang,paFor(game.q.ask)); });
+  $("sayBtn").addEventListener("click",()=>{
+    if(!game||!game.q) return;
+    if(game.q.paSay) sayPa(game.q.paSay,true); else speak(game.q.speak,game.q.lang,paFor(game.q.ask));
+  });
   $("mute").addEventListener("click",()=>{
     save.sound=!save.sound; persist();
     $("mute").textContent = save.sound ? "🔊":"🔇";
